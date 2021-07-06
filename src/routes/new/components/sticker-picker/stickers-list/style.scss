@@ -1,0 +1,90 @@
+@use "../../../../../theme";
+
+$back: 50;
+$front: 60;
+
+$min-height: 94px;
+
+.cont {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: $min-height;
+
+}
+
+.listCont {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+.select-emoji {
+  width: 100%;
+  height: $min-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.sl-scroll-container {
+  display: flex;
+  width: 100%;
+  border-radius: 27px;
+
+  flex-direction: row;
+  margin: 10px;
+
+  z-index: $back;
+}
+
+.bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 1);
+  border-radius: theme.$border-radius;
+}
+
+.sl-ul {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+    margin: 0 5px 0 5px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  li:first-child {
+    margin-left: 0;
+  }
+
+  li:last-child {
+    margin-right: 0;
+  }
+}
+
+.sl-thumb {
+  user-select: none;
+
+  $size: 64px;
+
+  width: $size;
+  height: $size;
+  max-width: $size;
+  min-height: $size;
+  padding: 5px;
+  border-radius: 27px;
+
+  transition: 0.12s ease-in-out;
+}

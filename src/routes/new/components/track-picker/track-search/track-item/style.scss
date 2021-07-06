@@ -1,0 +1,52 @@
+$size: 48px;
+
+.track-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: $size;
+
+    margin: 5px;
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+.track-item-album-cover {
+    width: $size;
+    height: $size;
+    background-color: rgb(0, 0, 0);
+    margin-right: 11px;
+}
+
+.track-item-album-cover img {
+    width: $size;
+    height: $size;
+    background-size: cover;
+}
+
+.track-item-metadata-cont {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.track-item-metadata {
+    display: flex;
+    flex-direction: column;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.track-item-name {
+    font-size: 80%;
+    font-weight: 700;
+}
+
+.track-item-artist {
+    font-size: 80%;
+    font-weight: 400;
+    margin-top: 0;
+}

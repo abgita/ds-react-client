@@ -1,0 +1,50 @@
+@use "../../../../theme";
+
+.create-cont {
+  width: 90%;
+
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.create-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 200px;
+}
+
+.sticker-track-cont {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  position: relative;
+  z-index: theme.$zIndex1;
+}
+
+@media screen and (min-width: theme.$min-width) {
+  .create-cont {
+    max-width: theme.$min-width * 0.8;
+    width: 80%;
+  }
+
+  .sticker-track-cont {
+    //flex-direction: row;
+    align-items: center;
+    min-height: 230px;
+  }
+}
+
+@media screen and (min-height: 700px) {
+  .create-cont {
+    justify-content: center;
+  }
+}

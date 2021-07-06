@@ -1,0 +1,11 @@
+.home-button {
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+
+  width: 20%;
+  $p: 20%;
+
+  padding: 10px $p 0 $p;
+  z-index: 100;
+}

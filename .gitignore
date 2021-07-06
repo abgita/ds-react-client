@@ -1,0 +1,19 @@
+# dotenv environment variables file
+.env.production
+
+# Node modules dir
+node_modules/
+
+# WebStorm dir
+.idea/
+
+# Firebase hosting
+.firebase/
+.firebaserc
+firebase.json
+
+bundle.css
+
+public/*.js
+
+*.log

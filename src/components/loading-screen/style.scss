@@ -1,0 +1,27 @@
+.loading-screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  overflow: hidden;
+  z-index: 100;
+  user-select: none;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-screen-anim {
+  width: 75%;
+  height: auto;
+}
+
+@media screen and (min-width: 720px) {
+  .loading-screen-anim {
+    width: 25%;
+  }
+}

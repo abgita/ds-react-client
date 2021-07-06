@@ -1,0 +1,232 @@
+@use "../../theme";
+
+$size: 60px;
+
+.track-preview-cont {
+  @include theme.theme-colors();
+
+  position: fixed;
+  bottom: -200px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 32px 32px 0 0;
+  padding: 0;
+
+  font-family: montserrat,sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  transition: bottom 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+
+  &-top {
+    bottom: auto;
+    top: -200px;
+    border-radius: 0 0 32px 32px;
+
+    transition: top 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+  }
+
+  &-visible-bottom {
+    bottom: 0;
+    padding-top: 4px;
+  }
+
+  &-visible-top {
+    top: 0;
+    padding-bottom: 4px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .track-preview-cont {
+    width: 35%;
+
+    left: auto;
+    right: 50px;
+
+    &-top {
+      left: 50px;
+      right: auto;
+    }
+  }
+}
+
+.track-preview {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: $size;
+  margin: 16px 20px 16px 20px;
+}
+
+.track-album-cover {
+  width: $size;
+  height: $size;
+  background-color: rgb(0, 0, 0);
+  margin-right: 11px;
+  border-radius: 18px;
+}
+
+.track-album-cover img {
+  width: $size;
+  height: $size;
+  background-size: cover;
+  transform: scale(0.7);
+}
+
+.track-metadata-cont {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
+.track-metadata {
+  display: flex;
+  flex-direction: column;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.track-metadata-top-cont {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.track-playable-icon {
+  width: 16px;
+  height: 16px;
+  background-image: url(/images/warning.svg);
+  background-position: center;
+  background-size: 16px 16px;
+  opacity: 0.5;
+}
+
+.track-volume-button {
+  width: 16px;
+  height: 16px;
+
+  border: none;
+  outline: none;
+
+  background-color: inherit;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+}
+
+.track-volume-up {
+  background-image: url(/images/volume_up.svg);
+}
+
+.track-volume-off {
+  background-image: url(/images/volume_off.svg);
+}
+
+.track-name {
+  font-size: 100%;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 60%;
+  flex-grow: 1;
+}
+
+.track-artist {
+  font-size: 80%;
+  font-weight: 400;
+  margin-top: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.track-link {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.track-link-spotify-logo {
+  /* This is to remember spotify's guidelines regarding icon min size!
+  https://developer.spotify.com/branding-guidelines/
+  */
+
+  min-width: 21px;
+  min-height: 21px;
+
+  width: 22px;
+  height: 22px;
+
+  background-image: url("/images/spotify.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 21px 21px;
+
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+}
+
+.track-link a {
+  font-weight: 700;
+  font-size: 80%;
+  color: rgb(30, 215, 96) !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: nowrap;
+  margin-bottom: 3px;
+}
+
+@media screen and (min-height: 900px) {
+  $size: 100px;
+
+  .track-preview {
+    height: $size;
+  }
+
+  .track-album-cover {
+    width: $size;
+    height: $size;
+  }
+
+  .track-album-cover img {
+    width: $size;
+    height: $size;
+    background-size: cover;
+  }
+
+  .track-name {
+    font-size: 110%;
+  }
+
+  .track-artist {
+    font-size: 90%;
+    margin-top: 7px;
+  }
+
+  .track-metadata-cont {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

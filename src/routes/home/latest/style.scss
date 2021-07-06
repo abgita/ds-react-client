@@ -1,0 +1,119 @@
+@use "../../../theme";
+
+$scaling: 0.8;
+$size: 128px;
+
+$thumb-size: 128px;
+
+.top-cont {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.top-list-cont {
+  $b: theme.$border-radius;
+
+  border-radius: $b $b 0 0;
+}
+
+.top-item {
+  @include theme.box-style(false);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 15px 0 0;
+  padding: 0;
+  width: $size;
+  justify-content: space-between;
+
+  user-select: none;
+  cursor: pointer;
+
+  color: #fff;
+}
+
+.top-item:first-child {
+  margin-left: 0;
+}
+
+.top-item:last-child {
+  margin-right: 0;
+}
+
+.top-item-thumb {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, theme.$white-opacity);
+  border-radius: theme.$border-radius;
+
+  img {
+    width: $thumb-size;
+    height: $thumb-size;
+    border-radius: theme.$border-radius * 1.3;
+    transform: scale(0.7);
+  }
+}
+
+.track-metadata {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 58px;
+}
+
+.track-spotify-icon {
+  background: url("images/spotify_white.png");
+  background-repeat: no-repeat;
+  background-size: 21px 21px;
+  background-position: center;
+
+  opacity: theme.$white-opacity;
+
+  width: 21px;
+  margin: 11px 11px 11px 6px;
+}
+
+.top-item-track {
+  width: $size - 48px;
+
+  p {
+    display: block;
+    padding: 0;
+
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 100% * $scaling;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: nowrap;
+  }
+}
+
+.top-item-track-name {
+  font-weight: 700;
+  margin-top: 15px * $scaling;
+}
+
+.top-item-track-artist {
+  margin-top: 0;
+  font-weight: 400;
+}

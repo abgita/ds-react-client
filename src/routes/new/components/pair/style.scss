@@ -1,0 +1,12 @@
+.pair-view-cont {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100vh;
+}
+
+@media screen and (min-width: 600px) {
+    .pair-view-cont {
+        width: 500px;
+    }
+}

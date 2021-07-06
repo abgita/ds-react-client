@@ -1,0 +1,54 @@
+.new-button {
+  position: relative;
+
+  width: 100vw;
+  z-index: 100;
+}
+
+.button-width {
+  position: relative;
+  width: 60%;
+  margin-left: -1%;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+}
+
+.bg {
+  animation: slide 2s ease-in-out infinite alternate;
+  background-image: linear-gradient(135deg, #e1e1e1 50%, #bfbfbf 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: .8;
+  position: absolute;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 3s;
+  animation-delay: 1s;
+}
+
+.bg3 {
+  animation-duration: 4s;
+  animation-delay: 1s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  
+  100% {
+    transform: translateX(25%);
+  }
+}

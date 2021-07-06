@@ -1,0 +1,138 @@
+@use "../../../../../theme";
+
+// Search component container
+
+.track-search {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  user-select: none;
+}
+
+// Search input
+
+.track-search-input-area {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.track-search-input-label {
+  color: #000;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.track-search-input-icon {
+  position: absolute;
+  left: 7px;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  opacity: 0.5;
+}
+
+.track-search-input {
+  position: relative;
+
+  input, button {
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+  }
+
+  input::-webkit-search-cancel-button,
+  input::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  input {
+    width: 100%;
+    height: 2em;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px 5px 30px;
+    margin: 0;
+    background: rgb(237, 237, 237);
+
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.5);
+    }
+  }
+}
+
+// Search box loading
+
+.search-input-loading {
+  position: absolute;
+  right: 7px;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  display: none;
+
+  div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    animation: search-input-loading-animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-top-color: rgb(180, 180, 180);
+  }
+}
+
+.search-input-loading-visible {
+  display: block;
+}
+
+@keyframes search-input-loading-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Search results
+
+.track-search-results-area {
+  max-height: 240px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  transition: 0.2ms ease-in-out;
+  margin: 0 10px 10px 10px;
+}
+
+.track-search-results {
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus {
+      background: red;
+    }
+  }
+}

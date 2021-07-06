@@ -1,0 +1,64 @@
+@use "sass:color";
+
+$light-theme: true;
+
+$dark-color: rgb(25, 20, 20);
+$light-color: rgba(255, 255, 255, 1);
+
+$background-color: $dark-color;
+$foreground-color: $light-color;
+
+$main-background-color: #242424;
+
+$white-opacity: 0.9;
+
+@if $light-theme {
+  $background-color: $light-color;
+  $foreground-color: $dark-color;
+
+  $main-background-color: linear-gradient(0deg, #06080d 0%, #0087ff 60%);
+}
+
+$min-width: 1000px;
+$border-radius: 36px;
+
+$zIndex1: 1;
+$zIndex10: 10;
+$zIndex100: 100;
+
+$border-color: rgba(0, 0, 0, 0.13);
+$box-shadow-color: rgba(0, 0, 0, 0.3);
+
+@mixin theme-colors( $force-light: false ) {
+  @if $force-light {
+    background-color: $light-color;
+    color: $dark-color;
+  } @else {
+    background-color: $background-color;
+    color: $foreground-color;
+  }
+}
+
+@mixin box-style( $shadow: true ) {
+  @if $shadow {
+    box-shadow: 0 2px 9px 0 $box-shadow-color;
+  }
+
+  border-radius: $border-radius;
+}
+
+@mixin box() {
+  @include box-style();
+
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 15px;
+}
+
+.box-style {
+  @include box-style();
+}
+
+.box {
+  @include box();
+}

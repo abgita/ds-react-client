@@ -1,0 +1,160 @@
+@use "../../theme";
+@use "sass:color";
+
+.cont {
+  width: 100%;
+  height: 100%;
+  background: theme.$main-background-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home {
+  width: 92%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-bottom: 96px;
+
+  @media all and (min-width: theme.$min-width) {
+    width: 60%;
+  }
+}
+
+@mixin section-tag( $margin: true ) {
+  @if $margin {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  color: #333;
+
+  font-size: 85%;
+  font-family: Montserrat,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
+  background: rgba(255,255,255,0.9);
+  border-radius: theme.$border-radius;
+
+  padding: 4px 12px;
+  align-self: flex-start;
+
+  cursor: default;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.section-name {
+  @include section-tag( true );
+}
+
+.topNav {
+  width: 100vw;
+  height: 30px;
+  display: flex;
+  padding-top: 5px;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.section-name-no-margin {
+  @include section-tag( false );
+
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 25px;
+
+  min-width: 18px;
+  height: 20px;
+
+  transition: all 2s ease-in-out;
+}
+
+.githubLogo {
+  position: absolute;
+  left: 12px;
+  top: 2px;
+
+  background-image: url("./images/github.png");
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: left center;
+  width: 115px;
+  height: 24px;
+}
+
+.githubLogo:hover ~ .sourceCode {
+  display: block;
+}
+
+.sourceCode {
+  margin-left: 24px;
+  display: none;
+}
+
+.githubLogo .sourceCode {
+  padding: 0;
+  background-color: transparent;
+}
+
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background: white;
+  box-shadow: 0 0 9px 0 theme.$box-shadow-color;
+
+  $r: theme.$border-radius;
+  border-radius: $r $r 0 0;
+}
+
+.title {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  background: none;
+  color: white;
+
+  font-size: 150%;
+  font-family: variex, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.titleAnimation {
+  width: 128px;
+  height: 128px;
+  margin-top: -25px;
+  margin-left: -25px;
+  margin-right: -25px;
+}
+
+.titleText {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    margin: 0;
+  }
+}
