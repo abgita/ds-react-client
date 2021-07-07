@@ -83,6 +83,8 @@ export default function StickerAnimation ({ large = true, controller, loop = tru
     controller.addStickerChangeListener(stickerChangeCallback);
 
     return () => {
+      if (lottieThumbTimer) clearTimeout(lottieThumbTimer);
+
       controller.removeStickerChangeListener(stickerChangeCallback);
     };
   }, [controller, loop]);
