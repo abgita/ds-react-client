@@ -15,9 +15,7 @@ jest.mock('lottie-web', () => {
   };
 });
 
-const reactLottieContRef = {
-  current: null
-};
+const lottieContElement = {};
 
 const stickerMock = {
   animation: {
@@ -41,7 +39,7 @@ it('loads correctly on first call', () => {
     expect(lottiePlayer.play).toBeInstanceOf(Function);
   });
 
-  return loadStickerAnimation(reactLottieContRef, stickerAnimationMock).then(onLoadedMock);
+  return loadStickerAnimation(lottieContElement, stickerAnimationMock).then(onLoadedMock);
 });
 
 it('throws when json is not loaded', () => {
@@ -49,7 +47,7 @@ it('throws when json is not loaded', () => {
 
   stickerAnimationMock.jsonLoaded = false;
 
-  return loadStickerAnimation(reactLottieContRef, stickerAnimationMock).catch(error => {
+  return loadStickerAnimation(lottieContElement, stickerAnimationMock).catch(error => {
     // eslint-disable-next-line jest/no-conditional-expect
     expect(error).toStrictEqual(Error('lottie file is not loaded'));
   });
@@ -68,5 +66,5 @@ it('returns same instance if it\'s defined', () => {
     expect(lottiePlayer).toHaveProperty('am.i');
   });
 
-  return loadStickerAnimation(reactLottieContRef, stickerAnimationMock).then(onLoadedMock);
+  return loadStickerAnimation(lottieContElement, stickerAnimationMock).then(onLoadedMock);
 });

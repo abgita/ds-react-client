@@ -9,7 +9,7 @@ export default function LottieEmoji ({ emoji, selected }) {
 
   useEffect(() => {
     const filePath = `/lottie/emojis/${emoji}.json`;
-    const instance = loadAnimationFromFile(ref, filePath, true, selected);
+    const instance = loadAnimationFromFile(ref.current, filePath, true, selected);
 
     return () => {
       instance.destroy();

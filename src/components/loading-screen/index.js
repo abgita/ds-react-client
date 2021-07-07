@@ -21,7 +21,7 @@ export default function LoadingScreen () {
     setParentElementBackground(animation.color);
 
     const filePath = `/lottie/${animation.fileName}.json`;
-    const instance = loadAnimationFromFile(ref, filePath, true, true);
+    const instance = loadAnimationFromFile(ref.current, filePath, true, true);
 
     return () => {
       instance.destroy();

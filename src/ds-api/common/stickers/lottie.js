@@ -2,9 +2,9 @@ import { ON_DEVELOPMENT } from '../../../config';
 
 let lottie = null;
 
-const defaultConfig = (contReactRef) => {
+const defaultConfig = (lottieContElement) => {
   return {
-    container: contReactRef.current,
+    container: lottieContElement,
     renderer: 'svg',
     rendererSettings: {
       progressiveLoad: true
@@ -75,16 +75,16 @@ function loadAnimation (options, onLoaded) {
   };
 }
 
-export function loadAnimationFromFile (lottieContRef, filePath, loop = true, autoplay = false) {
+export function loadAnimationFromFile (lottieContElement, filePath, loop = true, autoplay = false) {
   return loadAnimation({
     loop: loop,
     autoplay: autoplay,
     path: filePath,
-    ...defaultConfig(lottieContRef)
+    ...defaultConfig(lottieContElement)
   });
 }
 
-export function loadStickerAnimation (lottieContRef, stickerAnimation, loop = true) {
+export function loadStickerAnimation (lottieContElement, stickerAnimation, loop = true) {
   if (stickerAnimation.instance) return Promise.resolve(stickerAnimation.instance);
   if (!stickerAnimation.jsonLoaded) return Promise.reject(Error('lottie file is not loaded'));
 
@@ -93,7 +93,7 @@ export function loadStickerAnimation (lottieContRef, stickerAnimation, loop = tr
       loop: loop,
       autoplay: false,
       animationData: stickerAnimation.json,
-      ...defaultConfig(lottieContRef)
+      ...defaultConfig(lottieContElement)
     }, () => {
       resolve(lottieAnimation);
     });

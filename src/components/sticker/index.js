@@ -38,7 +38,7 @@ export default function StickerAnimation ({ large = true, controller, loop = tru
 
     const stickerChangeCallback = sticker => {
       if (sticker) {
-        loadStickerAnimation(lottieContRef, sticker.animation, loop).then(lottiePlayer => {
+        loadStickerAnimation(lottieContRef.current, sticker.animation, loop).then(lottiePlayer => {
           setLoaded(true);
 
           lottiePlayer.play();
