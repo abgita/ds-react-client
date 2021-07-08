@@ -14,6 +14,8 @@ export default function Pair ({ stickerId, trackId, isPlaying }) {
   const [pair, setPair] = useState({});
 
   useWrappedEffect(callback => {
+    changeBackground();
+
     DancingStickersPair.load(stickerId, trackId).then(callback(pair => {
       changeBackground(pair?.sticker);
 
