@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { getTop } from '../../../ds-api/common/posts';
 import { withRouter } from 'react-router-dom';
 
 import * as style from './style.scss';
+import { useWrappedEffect } from '../../../utils/react-custom-hooks';
 
 function Item ({ thumb, trackName, trackArtist, emojis, usageCount, onClick }) {
   return (
@@ -38,18 +39,8 @@ Item.propTypes = {
 function TopPairs (props) {
   const [pairs, setPairs] = useState(null);
 
-  useEffect(() => {
-    let mounted = true;
-
-    getTop().then(async latest => {
-      if (!mounted) return;
-
-      setPairs(latest);
-    }).catch(console.error);
-
-    return () => {
-      mounted = false;
-    };
+  useWrappedEffect(callback => {
+    getTop().then(callback(setPairs)).catch(console.error);
   }, []);
 
   const list = [];

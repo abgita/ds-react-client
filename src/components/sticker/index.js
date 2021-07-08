@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { loadStickerAnimation } from '../../ds-api/common/stickers/lottie';
+import { useWrappedEffect } from '../../utils/react-custom-hooks';
 
 import * as style from './style.scss';
 
@@ -32,24 +33,24 @@ export default function StickerAnimation ({ large = true, controller, loop = tru
 
   const lottieContRef = useRef();
 
-  useEffect(() => {
+  useWrappedEffect(callback => {
     let isThumbLoading = false;
     let lottieThumbTimer;
 
     const stickerChangeCallback = sticker => {
       if (sticker) {
-        loadStickerAnimation(lottieContRef.current, sticker.animation, loop).then(lottiePlayer => {
+        loadStickerAnimation(lottieContRef.current, sticker.animation, loop).then(callback(lottiePlayer => {
           setLoaded(true);
 
           lottiePlayer.play();
-        }).catch(() => {
+        })).catch(callback(() => {
           if (isThumbLoading) return;
 
           const thumbSrc = sticker.thumbFile.imgSrc;
 
           const thumb = new Image();
 
-          thumb.onload = () => {
+          thumb.onload = callback(() => {
             isThumbLoading = false;
 
             if (lottieThumbTimer) {
@@ -61,19 +62,19 @@ export default function StickerAnimation ({ large = true, controller, loop = tru
             }
 
             setThumbSrc(thumb.src);
-          };
+          });
 
           thumb.src = thumbSrc;
 
           isThumbLoading = true;
 
-          lottieThumbTimer = setTimeout(() => {
+          lottieThumbTimer = setTimeout(callback(() => {
             setLoaded(false);
             setThumbSrc(LOTTIE_IMAGE_SRC);
 
             lottieThumbTimer = null;
-          }, 200);
-        });
+          }), 200);
+        }));
       } else {
         setLoaded(false);
         setThumbSrc(LOTTIE_IMAGE_SRC);

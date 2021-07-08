@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import DancingStickers from '../../ds-api/write';
 import { withRouter } from 'react-router-dom';
@@ -8,23 +8,24 @@ import LoadingScreen from '../../components/loading-screen';
 import SharePair from './components/share-pair';
 import { changeBackground } from '../../utils/backgroundColor';
 import { releaseAnimation } from '../../ds-api/common/stickers/lottie';
+import { useWrappedEffect } from '../../utils/react-custom-hooks';
 
 function New ({ history }) {
   const [ready, setReady] = useState(false);
   const [loading, setLoading] = useState(true);
   const [pair, setPair] = useState(null);
 
-  useEffect(() => {
-    DancingStickers.init().then(() => {
+  useWrappedEffect(callback => {
+    DancingStickers.init().then(callback(() => {
       setReady(true);
 
       // give it some time to render the NewPair component, behind the loading screen
-      setTimeout(() => {
+      setTimeout(callback(() => {
         setLoading(false);
-      }, 1000);
+      }), 1000);
 
       DancingStickers.addStickerChangeListener(changeBackground);
-    });
+    }));
 
     changeBackground();
 

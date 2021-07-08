@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import StickerAnimation from '../../../../components/sticker';
@@ -8,18 +8,22 @@ import ColoredButton from '../../../../components/colored-button';
 
 import * as style from './style.scss';
 import DancingStickers from '../../../../ds-api/write';
+import { useWrappedEffect } from '../../../../utils/react-custom-hooks';
 
 export default function NewPair ({ onCompleted }) {
   const [sticker, setSticker] = useState(null);
   const [track, setTrack] = useState(null);
 
-  useEffect(() => {
-    DancingStickers.addStickerChangeListener(setSticker);
-    DancingStickers.addTrackChangeListener(setTrack);
+  useWrappedEffect(callback => {
+    const onStickerChange = callback(setSticker);
+    const onTrackChange = callback(setTrack);
+
+    DancingStickers.addStickerChangeListener(onStickerChange);
+    DancingStickers.addTrackChangeListener(onTrackChange);
 
     return () => {
-      DancingStickers.removeStickerChangeListener(setSticker);
-      DancingStickers.removeTrackChangeListener(setTrack);
+      DancingStickers.removeStickerChangeListener(onStickerChange);
+      DancingStickers.removeTrackChangeListener(onTrackChange);
     };
   }, []);
 

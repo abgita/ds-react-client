@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import LatestPosts from './latest';
 import TopPairs from './top';
@@ -9,10 +9,11 @@ import StickerAnimation from '../../components/sticker';
 import DancingStickers from '../../ds-api/write';
 import { getStickersByEmojiSet } from '../../ds-api/common/stickers';
 import { REPO_URL } from '../../config';
+import { useWrappedEffect } from '../../utils/react-custom-hooks';
 
 export default function Home () {
-  useEffect(() => {
-    DancingStickers.init().then(() => {
+  useWrappedEffect(callback => {
+    DancingStickers.init().then(callback(() => {
       const stickersList = DancingStickers.stickers().getList();
 
       const dancingStickers = getStickersByEmojiSet(stickersList, ['💃', '🕺', '🥳']);
@@ -22,7 +23,7 @@ export default function Home () {
       const sticker = dancingStickers[randomStickerIndex];
 
       DancingStickers.setSticker(sticker.index);
-    });
+    }));
 
     return () => {
       DancingStickers.setSticker();

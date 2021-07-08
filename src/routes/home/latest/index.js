@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { getLatest } from '../../../ds-api/common/posts';
@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
 import * as style from './style.scss';
+import { useWrappedEffect } from '../../../utils/react-custom-hooks';
 
 function Item ({ thumb, trackName, trackArtist, onClick }) {
   return (
@@ -36,18 +37,8 @@ Item.propTypes = {
 function LatestPosts (props) {
   const [posts, setPosts] = useState(null);
 
-  useEffect(() => {
-    let mounted = true;
-
-    getLatest().then(async latest => {
-      if (!mounted) return;
-
-      setPosts(latest);
-    }).catch(console.error);
-
-    return () => {
-      mounted = false;
-    };
+  useWrappedEffect(callback => {
+    getLatest().then(callback(setPosts)).catch(console.error);
   }, []);
 
   const list = [];
