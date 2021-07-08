@@ -58,7 +58,7 @@ Everything starts on telegram. Specifically, here 👉 https://t.me/DancingStick
 We, the members of the channel, send new stickers we found.
 There's a bot listening on the messages, which:
 - Gets the sticker's id and metadata.
-- Extracs the dominant colors from the sticker's thumbnail.
+- Extracts the dominant colors from the sticker's thumbnail.
 - Updates the stickers collection on the db (a mongodb instance on https://www.mongodb.com/cloud/atlas)
 
 Then there's a server which acts as a proxy between Telegram's API and our application, 
