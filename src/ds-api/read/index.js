@@ -45,13 +45,15 @@ async function loadSticker_ (stickerId, onAnimationLoaded) {
 export class DancingStickersPair {
     #sticker;
     #track;
-    #animationLoadedListener;
+    #stickerLoadedCallback;
 
     async load (stickerId, trackId) {
-      const onStickerLoadedCallback = (sticker) => {
-        if (!this.#animationLoadedListener) return;
+      const callback = this.#stickerLoadedCallback;
 
-        this.#animationLoadedListener(sticker);
+      const onStickerLoadedCallback = (sticker) => {
+        if (!callback) return;
+
+        callback(sticker);
       };
 
       try {
@@ -105,15 +107,15 @@ export class DancingStickersPair {
 
       this.#sticker = null;
       this.#track = null;
-      this.#animationLoadedListener = null;
+      this.#stickerLoadedCallback = null;
     }
 
     addStickerChangeListener (callback) {
-      this.#animationLoadedListener = callback;
+      this.#stickerLoadedCallback = callback;
     }
 
     removeStickerChangeListener () {
-      this.#animationLoadedListener = null;
+      this.#stickerLoadedCallback = null;
     }
 }
 
