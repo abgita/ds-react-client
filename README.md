@@ -1,5 +1,8 @@
 [![Test](https://github.com/abgita/ds-react-client/actions/workflows/test.js.yml/badge.svg?branch=main)](https://github.com/abgita/ds-react-client/actions/workflows/test.js.yml)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fdsticker.me)](https://dsticker.me)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+![GitHub](https://img.shields.io/github/license/abgita/ds-react-client)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/abgita/ds-react-client)
 
 # 🎶 Dancing Stickers - Web client
 - **🤔 What is it?:** animated stickers on steroids
@@ -7,9 +10,7 @@
 - **⌛️Why is it so slow to load?:** because the servers run on Heroku's free dynos and they're put to sleep after an hour of inactivity
 - **😠 I don't like the UI/UX!:** I know. I'm not an expert on those!.. but it isn't that bad, isn't it?
 
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-![GitHub](https://img.shields.io/github/license/abgita/ds-react-client)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/abgita/ds-react-client)
+![preview](https://user-images.githubusercontent.com/42152656/124974066-e4a9bc80-e01b-11eb-9161-322e49109159.png)
 
 ## Project files
 
